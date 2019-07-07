@@ -42,7 +42,7 @@ import (
 // input envs:
 // - HOST_IP: should be populated by downward API
 // - POD_IP: should be populated by downward API
-// - POD_IPS: should be populated by downward API (only with dualstack clusters)
+// - POD_IPS: should be populated by downward API (only with DualStack clusters)
 // - CNI_CONFIG_TEMPLATE: the cni .conflist template, run with {{ .PodCIDR }}
 
 // TODO: improve logging & error handling
@@ -55,7 +55,7 @@ const (
 	IPv4Family IPFamily = "ipv4"
 	// IPv6Family sets IPFamily to ipv6
 	IPv6Family IPFamily = "ipv6"
-	// DualStackFamily sets ClusterIPFamily to dualstack
+	// DualStackFamily sets ClusterIPFamily to DualStack
 	DualStackFamily IPFamily = "DualStack"
 )
 
