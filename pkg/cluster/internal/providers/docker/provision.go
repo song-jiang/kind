@@ -111,7 +111,7 @@ func createContainer(args []string) error {
 }
 
 func clusterIsIPv6(cfg *config.Cluster) bool {
-	return cfg.Networking.IPFamily == "ipv6"
+	return cfg.Networking.IPFamily == "ipv6" || cfg.Networking.IPFamily == "DualStack"
 }
 
 func clusterHasImplicitLoadBalancer(cfg *config.Cluster) bool {
