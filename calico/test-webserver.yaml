@@ -49,3 +49,22 @@ spec:
   selector:
     app: webserver
   type: NodePort
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    pod-name: client
+  name: client
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - sleep 360000
+    image: busybox
+    imagePullPolicy: Always
+    name: client
+  nodeSelector:
+    beta.kubernetes.io/os: linux
