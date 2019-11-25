@@ -66,7 +66,9 @@ docker exec kind-worker2 ip -6 a a fd00:20::2/64 dev eth0
 echo
 
 echo "Install Calico for dualstack"
-${kubectl} apply -f calico-3.10.0-dualstack.yaml
+cat calico-3.10.0-dualstack.yaml | \
+    sed 's,image: .*calico/node:.*,image: neiljerram/calico-node:dual-stack,' | \
+    ${kubectl} apply -f -
 echo
 
 echo "Wait Calico to be ready..."
@@ -78,14 +80,15 @@ done
 echo "Calico is running."
 echo
 
-echo "Create nginx deployment..."
-kubectl apply -f https://k8s.io/examples/application/deployment.yaml
+echo "Create test-webserver deployment..."
+kubectl apply -f test-webserver.yaml
 
-echo "Wait nginx pods to be ready..."
-while ! time ${kubectl} wait pod -l app=nginx --for=condition=Ready --timeout=300s; do
+echo "Wait webserver pods to be ready..."
+while ! time ${kubectl} wait pod -l app=webserver --for=condition=Ready --timeout=300s; do
     sleep 5
 done
-echo "nginx pods are running."
+echo "webserver pods are running."
 echo
 
 ${kubectl} get po --all-namespaces -o wide
+${kubectl} get svc
