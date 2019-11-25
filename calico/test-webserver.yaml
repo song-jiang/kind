@@ -32,6 +32,7 @@ spec:
     protocol: TCP
   selector:
     app: webserver
+  type: NodePort
 
 ---
 apiVersion: v1
@@ -47,3 +48,4 @@ spec:
     protocol: TCP
   selector:
     app: webserver
+  type: NodePort

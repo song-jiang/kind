@@ -34,7 +34,7 @@ networking:
   disableDefaultCNI: true
   ipFamily: DualStack
   podSubnet: "10.244.0.0/16,fd00:10:244::/16"
-  serviceSubnet: "10.96.0.0/12,fd00:10:96::/112"
+  serviceSubnet: "10.96.0.0/12,fa00:10:96::/112"
 nodes:
 # the control plane node
 - role: control-plane
@@ -60,9 +60,9 @@ ${kubectl} get no -o wide
 ${kubectl} get po --all-namespaces -o wide
 
 echo "Set ipv6 address on each node"
-docker exec kind-control-plane ip -6 a a fd00:20::8/64 dev eth0
-docker exec kind-worker ip -6 a a fd00:20::1/64 dev eth0
-docker exec kind-worker2 ip -6 a a fd00:20::2/64 dev eth0
+docker exec kind-control-plane ip -6 a a 2001:20::8/64 dev eth0
+docker exec kind-worker ip -6 a a 2001:20::1/64 dev eth0
+docker exec kind-worker2 ip -6 a a 2001:20::2/64 dev eth0
 echo
 
 echo "Install Calico for dualstack"
