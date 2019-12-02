@@ -581,7 +581,7 @@ spec:
         # container programs network policy and routes on each
         # host.
         - name: calico-node
-          image: calico/node:v3.10.0
+          image: calico/node:master
           env:
             # Use Kubernetes API as the backing datastore.
             - name: DATASTORE_TYPE
@@ -608,11 +608,11 @@ spec:
               value: "autodetect"
             # Enable IPIP
             - name: CALICO_IPV4POOL_IPIP
-              value: "Always"
+              value: "Never"
             - name: CALICO_IPV6POOL_IPIP
-              value: "Always"
+              value: "Never"
             - name: CALICO_IPV6POOL_NAT_OUTGOING
-              value: "true"
+              value: "false"
             - name: IP_AUTODETECTION_METHOD
               value: "interface=eth0"
             - name: IP6_AUTODETECTION_METHOD

@@ -68,9 +68,7 @@ docker exec kind-worker3 ip -6 a a 2001:20::3/64 dev eth0
 echo
 
 echo "Install Calico for dualstack"
-cat calico-3.10.0-dualstack.yaml | \
-    sed 's,image: .*calico/node:.*,image: neiljerram/calico-node:dual-stack,' | \
-    ${kubectl} apply -f -
+${kubectl} apply -f calico-3.10.0-dualstack.yaml
 echo
 
 echo "Wait Calico to be ready..."
