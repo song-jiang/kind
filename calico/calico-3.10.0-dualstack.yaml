@@ -538,7 +538,7 @@ spec:
         # This container installs the CNI binaries
         # and CNI network config file on each node.
         - name: install-cni
-          image: calico/cni:v3.10.0
+          image: calico/cni:master
           command: ["/install-cni.sh"]
           env:
             # Name of the CNI config file to create.
