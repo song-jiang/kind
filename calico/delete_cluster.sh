@@ -1,0 +1,1 @@
+../bin/kind delete cluster
