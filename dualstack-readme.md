@@ -11,7 +11,7 @@ nf_conntrack_ipv4
 
 - Git clone git@github.com:song-jiang/kind.git repo to $GOPATH/src/sigs.k8s.io/kind
 
-- Checkout branch song-dualstack
+- Checkout branch song-dualstack-01
 
 - Run make build to build bin/kind
 
